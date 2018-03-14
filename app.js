@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 
 var app = express();
 
@@ -23,7 +22,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -33,14 +31,32 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+var isProduction = process.env.NODE_ENV === 'production';
 
-  // render the error page
+// development error handler
+// will print stacktrace
+if (!isProduction) {
+  app.use(function(err, req, res, next) {
+    console.log(err.stack);
+
+    res.status(err.status || 500);
+
+    res.json({'errors': {
+      message: err.message,
+      error: err
+    }});
+  });
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error');
+  res.json({'errors': {
+    message: err.message,
+    error: {}
+  }});
 });
+
 
 module.exports = app;

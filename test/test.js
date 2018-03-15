@@ -70,5 +70,11 @@ describe('loading express', function () {
     }
   });
 
+  it('Post a comment to and article to /api/comments/', function testSlash(done) {
+    request(server)
+      .post('/api/comments')
+      .send({"comment": articleCom}) 
+      .expect(200, done);
+  });
 });
 

@@ -75,3 +75,30 @@ Response in in the following format:
 }
 
 ```
+### Post Comment to article
+Post a comment to an article
+`Post /api/comments/`
+Example Request body:
+```
+{
+  "comment": {
+    "articleID": 0,
+    "content": "That was a good read",
+    "nickname": "Bob"
+  }
+}
+```
+And it should return with 200 Ok and a body like:
+
+```
+{
+  "comment":{
+    "id": 3,
+    "nickname": "Bob",
+    "content": "That was a good read",
+    "creationDate": "2018-03-15T08:56:43.855Z",
+    "child":[]
+  }
+}
+Note that you get back the comment id not the articleID
+

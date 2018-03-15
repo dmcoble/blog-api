@@ -65,6 +65,23 @@ module.exports = {
       throw {error: "couldn't find commentID"};
     }); 
   },
+  // Returns all comments on a given article 
+  getComments: function (articleID) {
+    return new Promise((resolve, reject) =>{
+      var comments = [];
 
+      // Iterate over top level of map looking
+      // for maching articleIDs
+      commentStore.forEach(function(value,key){
+        if (parseInt(articleID) === parseInt(key)) {
+          comments.push(value);
+        } 
+      });
+
+      // Create the JSON response
+      var response = {commnets: comments};
+      resolve(response);  
+    });
+  }
 };
 

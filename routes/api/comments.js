@@ -40,6 +40,16 @@ router.post('/comment', function(req, res, next) {
     });
 });
 
+router.get('/:articleid', function(req, res, next) {
+  var articleID =  req.params.id;
 
+  com.getArticle(articleID)
+    .then(function(result) {
+      return res.json(result);   
+    })
+    .catch(function(error) {
+      return res.json(error); 
+    });
+});
 module.exports = router;
 

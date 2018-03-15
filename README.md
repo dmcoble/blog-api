@@ -1,9 +1,12 @@
-#A demo backend blog api
-run `npm install` then `npm start`
+# A demo backend blog api
+Run `npm install` then `npm start`
+
 To start in dev mode run `npm run dev`
+
 To run tests run `npm test`
 
-##API Spec
+## API Spec
+
 ### Test
 test the endpoint
 `Get /api/`
@@ -13,9 +16,12 @@ Should Return
   "message": "Welcome to our api!"
 }
 ```
-###Post
+
+### Post
 create an article
+
 `Post /api/articles/`
+
 Example Request body:
 ```
 {
@@ -38,9 +44,12 @@ And it should return with 200 Ok and a body like:
   }
 }
 ```
+
 ### Get article content
 Gets the content of the article from the given id
+
 `Get /api/articles/:id`
+
 Response is in the following format:
 ```
 {
@@ -48,12 +57,15 @@ Response is in the following format:
   "content": "My awesome article"
 }
 ```
+
 ### Get list of articles
 Gets a list of articles up to 20 at a time.
 You can use ?offset=x where x is an int to offset results.
 If there are less than 20 remaining to be quaried it will just return however many are left.
 I.e. if you have 70 total articles and quaried with ?offset=60 you would only get 10 articles.
+
 `Get /api/articles` or `Get /api/articles?offset=x` where x is any int
+
 Response in in the following format:
 ```
 {
@@ -75,9 +87,12 @@ Response in in the following format:
 }
 
 ```
+
 ### Post Comment to article
 Post a comment to an article
+
 `Post /api/comments/`
+
 Example Request body:
 ```
 {
@@ -100,10 +115,14 @@ And it should return with 200 Ok and a body like:
     "child":[]
   }
 }
+```
 Note that you get back the comment id not the articleID
+
 ### Post comment to a comment
 Post a comment in reply to a comment
+
 `Post /api/comments/comment`
+
 Example Request body:
 ```
 {
@@ -115,6 +134,7 @@ Example Request body:
 }
 ```
 The commentID is the id of the comment you are replying too
+
 And it should return with 200 Ok and a body like:
 
 ```
@@ -129,8 +149,11 @@ And it should return with 200 Ok and a body like:
 }
 ```
 Note that you get back the comment id not the articleID
+
 ### Get all the comments for a given article
+
 `/api/comments/:articleID`
+
 The response is in the following format:
 ```
 {
@@ -157,7 +180,6 @@ The response is in the following format:
   {"id": 1, "article": 1, "nickname": "mark", "content": "I didnt like it",…}
   ]
 }
-
 ```
 
 

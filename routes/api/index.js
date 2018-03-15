@@ -4,6 +4,7 @@ var router = require('express').Router();
 router.get('/', function(req, res) {
     res.json({ message: 'Welcome to our api!' });   
 });
+router.use('/articles', require('./articles'));
 
 // Error handling
 router.use(function(err, req, res, next){

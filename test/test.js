@@ -9,6 +9,13 @@ describe('loading express', function () {
   var app = require('../app');
   var http = require('http');
   var server = http.createServer(app);
+
+  //Sample data. 
+  var articleReq = {"title": "Title","content": "cccc","nickname": "name"};
+
+
+
+
   beforeEach(function () {
     server.listen(3000);
   });
@@ -20,5 +27,11 @@ describe('loading express', function () {
     .get('/api/')
     .expect(200, done);
   });
+  it('Post an article to /api/articles/', function testSlash(done) {
+  request(server)
+    .post('/api/articles')
+    .send({"article": articleReq}) 
+    .expect(200, done);});
+
 });
 

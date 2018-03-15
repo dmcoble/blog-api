@@ -22,6 +22,19 @@ module.exports = {
       response = {article: article}
       resolve(response);  
     });
+  },
+  // Gets an articles content by the articles id
+  getArticle: function (id) {
+
+    return new Promise((resolve, reject) =>{
+
+      art = articleStore.get(parseInt(id));
+
+      // Create the JSON response
+      response = {id: id, content: art.content};
+
+      resolve(response);  
+    });
   }
 
 };

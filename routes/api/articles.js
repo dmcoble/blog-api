@@ -5,6 +5,15 @@ var art = require('../../models/articles');
 
 
 // Post an article
+router.get('/:id', function(req, res, next) {
+  
+  var id =  req.params.id;
+  art.getArticle(id).then(function(result) {
+   return res.json(result);   
+  });
+});
+
+// Post an article
 router.post('/', function(req, res, next) {
 
   var a = req.body.article;

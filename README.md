@@ -11,6 +11,17 @@ Should Return
 }
 ```
 
+`Get /api/article/:id`
+Gets the content of the article from the given id
+Response is in the following format:
+```
+{
+  "id": "1",
+  "content": "My awesome article"
+}
+```
+
+
 `Post /api/articles/`
 Example Request body:
 ```

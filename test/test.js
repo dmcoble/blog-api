@@ -76,5 +76,18 @@ describe('loading express', function () {
       .send({"comment": articleCom}) 
       .expect(200, done);
   });
+
+  it('Post a comment to a comment to /api/comments/comment', function testSlash(done) {
+    // Comment on article first
+    request(server)
+      .post('/api/comments')
+      .send({"comment": articleCom}) 
+    
+    // Test commenting on comments
+    request(server)
+      .post('/api/comments/comment')
+      .send({"comment": commentCom}) 
+      .expect(200, done);
+  });
 });
 

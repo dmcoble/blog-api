@@ -23,7 +23,7 @@ router.post('/', function(req, res, next) {
 });
 
 // Post a comment in reply to a comment already made
-router.post('/', function(req, res, next) {
+router.post('/comment', function(req, res, next) {
   //Get request body
   var a = req.body.comment;
 

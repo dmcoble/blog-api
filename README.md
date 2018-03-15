@@ -101,4 +101,36 @@ And it should return with 200 Ok and a body like:
   }
 }
 Note that you get back the comment id not the articleID
+### Post comment to a comment
+Post a comment in reply to a comment
+`Post /api/comments/comment`
+Example Request body:
+```
+{
+  "comment": {
+    "commentID": 0,
+    "content": "I liked it too",
+    "nickname": "Jack"
+  }
+}
+```
+The commentID is the id of the comment you are replying too
+And it should return with 200 Ok and a body like:
+
+```
+{
+  "comment":{
+    "id": 1,
+    "nickname": "Jack",
+    "content": "I liked it too",
+    "creationDate": "2018-03-15T08:56:43.855Z",
+    "child":[]
+  }
+}
+```
+Note that you get back the comment id not the articleID
+
+
+
+
 

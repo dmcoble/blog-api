@@ -72,8 +72,9 @@ module.exports = {
 
       // Iterate over top level of map looking
       // for maching articleIDs
-      commentStore.forEach(function(value,key){
-        if (parseInt(articleID) === parseInt(key)) {
+      commentStore.forEach(function(value){
+        var storedArtID = value.article;
+        if (parseInt(articleID) === parseInt(storedArtID)) {
           comments.push(value);
         } 
       });

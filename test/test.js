@@ -89,5 +89,29 @@ describe('loading express', function () {
       .send({"comment": commentCom}) 
       .expect(200, done);
   });
+
+  it('Get all comments from an article /api/comments', function testSlash(done) {
+    // populate 5 comments
+    for (i = 0; i < 50; i++) {
+      (function(n) {
+        request(server)
+          .post('/api/comments')
+          .send({"comment": articleCom}) 
+      })(i);
+    }
+    // Nest 2 comments
+    for (i = 0; i < 50; i++) {
+      (function(n) {
+        request(server)
+          .post('/api/comments/comment')
+          .send({"comment": commentCom}) 
+      })(i);
+    }
+    // see if I get all the comments 
+    request(server)
+      .get('/api/comments/0')
+      .expect(200, done)
+
+  });
 });
 

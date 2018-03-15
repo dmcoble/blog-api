@@ -41,9 +41,9 @@ router.post('/comment', function(req, res, next) {
 });
 
 router.get('/:articleid', function(req, res, next) {
-  var articleID =  req.params.id;
+  var articleID =  req.params.articleid;
 
-  com.getArticle(articleID)
+  com.getComments(articleID)
     .then(function(result) {
       return res.json(result);   
     })

@@ -129,7 +129,36 @@ And it should return with 200 Ok and a body like:
 }
 ```
 Note that you get back the comment id not the articleID
+### Get all the comments for a given article
+`/api/comments/:articleID`
+The response is in the following format:
+```
+{
+  "commnets":[
+  {
+    "id": 0,
+    "article": 1,
+    "nickname": "bob",
+    "content": "I liked it ",
+    "creationDate": "2018-03-15T21:15:15.796Z",
+    "child":[
+    {
+      "id": 2,
+      "nickname": "mark",
+      "content": "how could you like it",
+      "creationDate": "2018-03-15T21:19:31.910Z",
+      "child":[
+      {"id": 4, "nickname": "mike", "content": "I liked it", "creationDate": "2018-03-15T21:19:53.584Z",…}
+      ]
+    },
+    {"id": 6, "nickname": "rob", "content": "I liked it too", "creationDate": "2018-03-15T21:23:51.581Z",…}
+    ]
+  },
+  {"id": 1, "article": 1, "nickname": "mark", "content": "I didnt like it",…}
+  ]
+}
 
+```
 
 
 

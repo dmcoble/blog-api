@@ -5,6 +5,7 @@ router.get('/', function(req, res) {
     res.json({ message: 'Welcome to our api!' });   
 });
 router.use('/articles', require('./articles'));
+router.use('/comments', require('./comments'));
 
 // Error handling
 router.use(function(err, req, res, next){

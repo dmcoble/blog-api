@@ -1,5 +1,7 @@
 #A demo backend blog api
 run `npm install` then `npm start`
+To start in dev mode run `npm run dev`
+To run tests run `npm test`
 
 ##API Spec
 ### Test
@@ -73,13 +75,3 @@ Response in in the following format:
 }
 
 ```
-
-
-
-
-
-
-
-
-
-

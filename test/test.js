@@ -2,6 +2,8 @@
 // a small project I think its appropriate to just keep
 // all the tests in one spot
 
+// These are just simple test cases, for a productin app
+// you would want to test a lot more edge cases
 
 var request = require('supertest');
 
@@ -12,8 +14,9 @@ describe('loading express', function () {
 
   //Sample data. 
   var articleReq = {"title": "Title","content": "cccc","nickname": "name"};
-  var contentRes = {id: "0", content: "cccc"};
-
+  var contentRes = {id: 0, content: "cccc"};
+  var articleCom = {articleID: 0, content: "cool", nickname: "nick"};
+  var commentCom = {commentID: 0, content: "nice", nickname: "rick"};
 
 
   beforeEach(function () {
@@ -48,9 +51,7 @@ describe('loading express', function () {
   });
 
   it('Get list of articles from /api/articles', function testSlash(done) {
-    this.timeout(10 * 1000);
     // populate 50 articles
-    
     for (i = 0; i < 50; i++) {
       (function(n) {
         request(server)

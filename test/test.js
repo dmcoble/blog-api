@@ -12,7 +12,7 @@ describe('loading express', function () {
 
   //Sample data. 
   var articleReq = {"title": "Title","content": "cccc","nickname": "name"};
-
+  var contentRes = {id: "1", content: "cccc"};
 
 
 
@@ -31,7 +31,18 @@ describe('loading express', function () {
   request(server)
     .post('/api/articles')
     .send({"article": articleReq}) 
-    .expect(200, done);});
+    .expect(200, done);
+  });
+  it('Get an articles content from /api/articles/:id', function testSlash(done) {
+  // populate article
+  request(server)
+    .post('/api/articles')
+    .send({"article": articleReq}) 
+  // get article and compare content
+  request(server)
+    .get('/api/articles/1')
+    .expect(200, contentRes, done)
+  });
 
 });
 

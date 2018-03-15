@@ -13,7 +13,8 @@ module.exports = {
 
     return new Promise((resolve, reject) =>{
       // Create an ID and Article struct
-      var id = articleStore.size + 1; 
+      // The id is indexed at 0
+      var id = articleStore.size; 
       var article = {id: id, nickname: nickname, title: title, content: content, creationDate: creationDate};
 
       // Store them in the map
@@ -23,6 +24,7 @@ module.exports = {
       resolve(response);  
     });
   },
+
   // Gets an articles content by the articles id
   getArticle: function (id) {
 
@@ -35,7 +37,41 @@ module.exports = {
 
       resolve(response);  
     });
+  },
+
+  // Gets an articles content by the articles id
+  getArticleList: function (offset) {
+    // Get total number of articles we need to return
+    // only need to add 19 b/c we index at 0
+    var total = offset + 19
+    // Get the ammount of articles in storage
+    var inStorage = articleStore.size
+    // If we have less than 20 left to return only
+    // return the amount we need so we dont go through
+    // extra loops
+    if (total > inStorage ) {
+      var dif = total - inStorage;
+      total = total - dif;
+    }
+
+    return new Promise((resolve, reject) =>{
+      var articles = [];
+
+      // Loop through starting at the offset and 
+      // going until the total
+      for (i = offset; i < total; i++) {
+        art = articleStore.get(i);
+        info = {id: art.id, title: art.title, nickname: art.nickname, creationDate: art.creationDate}
+        articles.push(info)
+      }
+
+      // Create the JSON response
+      var response = {articleNum: total - offset, articles: articles};
+
+      resolve(response);  
+    });
   }
+
 
 };
 

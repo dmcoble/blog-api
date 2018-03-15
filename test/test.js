@@ -12,7 +12,7 @@ describe('loading express', function () {
 
   //Sample data. 
   var articleReq = {"title": "Title","content": "cccc","nickname": "name"};
-  var contentRes = {id: "1", content: "cccc"};
+  var contentRes = {id: "0", content: "cccc"};
 
 
 

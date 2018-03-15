@@ -152,7 +152,7 @@ Note that you get back the comment id not the articleID
 
 ### Get all the comments for a given article
 
-`/api/comments/:articleID`
+`Get /api/comments/:articleID`
 
 The response is in the following format:
 ```
@@ -181,7 +181,3 @@ The response is in the following format:
   ]
 }
 ```
-
-
-
-
